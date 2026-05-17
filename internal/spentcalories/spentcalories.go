@@ -20,7 +20,7 @@ const (
 func parseTraining(data string) (int, string, time.Duration, error) {
 	parts := strings.Split(data, ",")
 	if len(parts) != 3 {
-		return 0, "", 0, fmt.Errorf("Длина слайса не равна 3")
+		return 0, "", 0, fmt.Errorf("длина слайса не равна 3")
 	}
 	steps, err := strconv.Atoi(parts[0])
 	if err != nil {
@@ -77,7 +77,7 @@ func TrainingInfo(data string, weight, height float64) (string, error) {
 			return "", calErr
 		}
 	default:
-		return "", fmt.Errorf("Неизвестный тип тренировки")
+		return "", fmt.Errorf("неизвестный тип тренировки")
 	}
 	result := fmt.Sprintf(
 		"Тип тренировки: %s\nДлительность: %.2f ч.\nДистанция: %.2f км.\nСкорость: %.2f км/ч\nСожгли калорий: %.2f",
