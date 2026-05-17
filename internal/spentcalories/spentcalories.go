@@ -33,6 +33,9 @@ func parseTraining(data string) (int, string, time.Duration, error) {
 	if err != nil {
 		return 0, "", 0, err
 	}
+	if duration <= 0 {
+		return 0, "", 0, fmt.Errorf("продолжительность тренировки должна быть больше нуля")
+	}
 	return steps, parts[1], duration, nil
 }
 
