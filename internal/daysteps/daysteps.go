@@ -19,7 +19,7 @@ const (
 func parsePackage(data string) (int, time.Duration, error) {
 	parts := strings.Split(data, ",")
 	if len(parts) != 2 {
-		return 0, 0, fmt.Errorf("количество элементов не равно 2")
+		return 0, 0, fmt.Errorf("некорректный формат данных")
 	}
 
 	steps, err := strconv.Atoi(parts[0])
@@ -33,6 +33,10 @@ func parsePackage(data string) (int, time.Duration, error) {
 	duration, err := time.ParseDuration(parts[1])
 	if err != nil {
 		return 0, 0, err
+	}
+
+	if duration <= 0 {
+		return 0, 0, fmt.Errorf("продолжительность прогулки должна быть больше нуля")
 	}
 
 	return steps, duration, nil
